@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Book{
+    -isbn: String
+    -title: String
+    -author: String
+    -genre: Genre
+    -releaseYear: LocalDate
+    -pageNumber: int
+    -wordCount: int
+}
+
+Book --> Genre
+
+enum Genre{
+    FANTASY,
+    SCIFI,
+    NON-FICTION
+}
+
+class BookService{
+    -library: Library
+
+    +getBook(isbn: String): Book
+}
+
+BookService --> Library
+
+class Library{
+    -bookList: ArrayList<Book>
+}
+
+Library o-- Book
+
+@enduml
